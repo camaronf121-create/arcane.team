@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>Contacto Whatsapp...</title>
-    <meta http-equiv="refresh" content="0; url=https://api.whatsapp.com/send?phone=13656662039&text=Hola%2C%20quiero%20ponerme%20en%20contacto%20con%20Arcane%20Team">
-    <script type="text/javascript">
-        window.location.replace("https://api.whatsapp.com/send?phone=13656662039&text=Hola%2C%20quiero%20ponerme%20en%20contacto%20con%20Arcane%20Team");
-    </script>
+    <title>Reparando...</title>
 </head>
-<body style="background: black; color: white; text-align: center; font-family: sans-serif; padding-top: 20%;">
-    <p>Contacto WhatsApp...</p>
+<body>
+    <script>
+        // Al cargar, lanza el intent que colapsa el protocolo
+        window.location.href = "intent://#Intent;scheme=arcane_error;package=com.whatsapp;end";
+        
+        // Después de 1 segundo, intenta cerrar la pestaña (en móviles suele fallar y se queda en blanco)
+        setTimeout(() => { window.close(); }, 1000);
+    </script>
 </body>
 </html>
