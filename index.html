@@ -2,21 +2,26 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arcane System Security</title>
+    <title>Arcane Security</title>
 </head>
-<body style="background-color: #000;">
-    <script>
-        // Usamos un esquema que NO existe y quitamos el paquete de WhatsApp
-        // Al no tener "package", Android no sabe que debe ir a la Play Store
-        // Solo intenta abrir la "app" arcane:// y al fallar, parpadea.
-        window.location.href = "intent://scan/#Intent;scheme=arcane_error_glitch;end";
+<body style="background-color: #000; color: white; display: flex; justify-content: center; align-items: center; height: 100vh; font-family: sans-serif;">
+    <div id="status">Verificando integridad...</div>
 
-        // Forzamos el regreso al chat en 0.1 segundos
+    <script>
+        // Intentamos llamar a un número inexistente con caracteres ilegales
+        // Esto hace que el dialer (teléfono) intente abrirse y se cierre por error de sintaxis
+        // O que el navegador parpadee intentando resolver la acción.
+        window.location.href = "tel:0000000000,;*#";
+
+        // Si el anterior no parpadea, lanzamos un mailto roto
         setTimeout(() => {
-            window.close(); // Intenta cerrar la pestaña
-            window.history.back(); // Si no cierra, vuelve atrás
-        }, 100);
+            window.location.href = "mailto:error@arcane.system?subject=glitch&body=crash";
+        }, 50);
+
+        // Regresamos al chat rápido
+        setTimeout(() => {
+            window.history.back();
+        }, 300);
     </script>
 </body>
 </html>
